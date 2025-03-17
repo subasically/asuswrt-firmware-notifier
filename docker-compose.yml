@@ -1,0 +1,13 @@
+services:
+  asuswrt-firmware-notifier:
+    image: your-dockerhub-username/asuswrt-firmware-notifier:latest
+    restart: always
+    environment:
+      RSS_FEED_URL: "https://sourceforge.net/projects/asuswrt-merlin/rss?path=/RT-AX58U/Release"
+      LAST_VERSION_FILE: "/app/last_version.txt"  # Important: Use absolute path inside container
+      NOTIFICATION_METOD: "print"
+      EMAIL_ADDRESS: "your_email@example.com"
+      SLACK_WEBHOOK_URL: "your_slack_webhook_url"
+      CHECK_FREQUENCY: 60 # 60 * 5
+    volumes:
+      - ./last_version.txt:/app/last_version.txt
