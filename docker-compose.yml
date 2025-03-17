@@ -1,6 +1,6 @@
 services:
   asuswrt-firmware-notifier:
-    image: your-dockerhub-username/asuswrt-firmware-notifier:latest
+    image: subasically/asuswrt-firmware-notifier:latest
     restart: always
     environment:
       RSS_FEED_URL: "https://sourceforge.net/projects/asuswrt-merlin/rss?path=/RT-AX58U/Release"
