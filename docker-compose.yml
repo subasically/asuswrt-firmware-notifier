@@ -4,11 +4,13 @@ services:
     platform: linux/amd64
     restart: always
     environment:
-      RSS_FEED_URL: "https://sourceforge.net/projects/asuswrt-merlin/rss?path=/RT-AX58U/Release"
-      LAST_VERSION_FILE: "/app/last_version.txt" # Important: Use absolute path inside container
-      NOTIFICATION_METHOD: "print"
-      EMAIL_ADDRESS: "your_email@example.com"
-      SLACK_WEBHOOK_URL: "https://hooks.slack.com/services/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"
+      LOG_LEVEL: "info"
+      PYTHONUNBUFFERED: "1" # added to ensure immediate log output
       CHECK_FREQUENCY: 60 # 60 * 5
+      RSS_FEED_URL: "https://sourceforge.net/projects/asuswrt-merlin/rss?path=/RT-AX58U/Release"
+      NOTIFICATION_METHOD: "print" # Change to "email" or "slack" as needed
+      # EMAIL_ADDRESS: "your_email@example.com"
+      # SLACK_WEBHOOK_URL: ""
+      LAST_VERSION_FILE: "/app/last_version.txt" # Important: Use absolute path inside container
     volumes:
       - ./last_version.txt:/app/last_version.txt
