@@ -1,0 +1,25 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging artifacts
+build/
+dist/
+*.egg-info/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Docker environment files (optional)
+.env
+
+# Other common temporary files
+*.swp
+*.swo
+*.dev.yml
