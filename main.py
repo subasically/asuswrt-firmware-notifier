@@ -118,7 +118,7 @@ def main():
                     save_last_version(last_version_file, latest_version)
                     logger.info(f"Notified about new version: {latest_version}")
                 else:
-                    logger.info("No new firmware found.")
+                    logger.info(f"No new firmware found. Current version: {last_version}, Latest version: {latest_version}")
             else:
                 logger.error("Error: Could not extract version from RSS entry.")
         else:
