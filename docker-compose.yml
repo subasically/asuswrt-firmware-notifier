@@ -1,13 +1,14 @@
 services:
   asuswrt-firmware-notifier:
     image: ghcr.io/subasically/asuswrt-firmware-notifier:latest
+    platform: linux/amd64
     restart: always
     environment:
       RSS_FEED_URL: "https://sourceforge.net/projects/asuswrt-merlin/rss?path=/RT-AX58U/Release"
-      LAST_VERSION_FILE: "/app/last_version.txt"  # Important: Use absolute path inside container
-      NOTIFICATION_METOD: "print"
+      LAST_VERSION_FILE: "/app/last_version.txt" # Important: Use absolute path inside container
+      NOTIFICATION_METHOD: "print"
       EMAIL_ADDRESS: "your_email@example.com"
-      SLACK_WEBHOOK_URL: "your_slack_webhook_url"
+      SLACK_WEBHOOK_URL: "https://hooks.slack.com/services/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"
       CHECK_FREQUENCY: 60 # 60 * 5
     volumes:
       - ./last_version.txt:/app/last_version.txt
