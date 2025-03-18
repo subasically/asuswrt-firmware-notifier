@@ -4,6 +4,7 @@ import requests
 import time
 import feedparser
 from logger import logger  # new logger import
+import shutil  # added for directory removal
 
 # Retrieve environment variables
 rss_feed_url = os.environ.get("RSS_FEED_URL")
@@ -17,7 +18,7 @@ check_frequency = int(os.environ.get("CHECK_FREQUENCY", 60))
 logger.info("""
     ╔════════════════════════════════════════════════════════╗
     ║    Asuswrt-Merlin Firmware Notifier is now running!     ║
-    ║  Monitoring for the latest firmware updates with style. ║
+    ║       Monitoring for the latest firmware updates.       ║
     ╚════════════════════════════════════════════════════════╝
 """)
 
@@ -30,6 +31,9 @@ logger.info(f"Check Frequency: {check_frequency}")
 
 def get_last_version(file_path):
     """Reads the last known version from a file."""
+    if os.path.isdir(file_path):
+        logger.error(f"Error: Expected a file but found a directory at {file_path}.")
+        return None  # Or handle appropriately
     try:
         with open(file_path, "r") as f:
             version = f.read().strip()
@@ -41,6 +45,9 @@ def get_last_version(file_path):
 
 def save_last_version(file_path, version):
     """Saves the latest version to a file."""
+    if os.path.isdir(file_path):
+        logger.warning(f"{file_path} is a directory. Removing directory and creating a file instead.")
+        shutil.rmtree(file_path)
     with open(file_path, "w") as f:
         f.write(version)
 
