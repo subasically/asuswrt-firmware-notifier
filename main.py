@@ -83,15 +83,10 @@ def validate_email(email):
 
 
 def validate_slack_webhook(webhook_url):
-    """Basic Slack webhook validation by sending a test message."""
+    """Basic Slack webhook validation by sending a HEAD request and verifying a 2xx response without sending a test message."""
     try:
-        response = requests.post(
-            webhook_url,
-            data=json.dumps({"text": "Test message from firmware checker."}),
-            headers={"Content-Type": "application/json"},
-        )
-        response.raise_for_status()  # Raise HTTPError for bad responses (4xx or 5xx)
-        return True
+        response = requests.head(webhook_url, timeout=5)
+        return 200 <= response.status_code < 300
     except requests.exceptions.RequestException:
         return False
 

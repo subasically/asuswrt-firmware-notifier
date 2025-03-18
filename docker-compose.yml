@@ -10,4 +10,3 @@ services:
       # SLACK_WEBHOOK_URL: ""
       CHECK_FREQUENCY: 3600 # 1 hour (use 86400 for a day)
       LOG_LEVEL: "info"
-      PYTHONUNBUFFERED: "1" # added to ensure immediate log output
