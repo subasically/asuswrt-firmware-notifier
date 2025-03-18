@@ -32,7 +32,10 @@ def get_last_version(file_path):
     """Reads the last known version from a file."""
     try:
         with open(file_path, "r") as f:
-            return f.read().strip()
+            version = f.read().strip()
+            if not version:  # Treat empty file as no version
+                return None
+            return version
     except FileNotFoundError:
         return None
 
