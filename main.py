@@ -83,12 +83,10 @@ def validate_email(email):
 
 
 def validate_slack_webhook(webhook_url):
-    """Basic Slack webhook validation by sending a HEAD request and verifying a 2xx response without sending a test message."""
-    try:
-        response = requests.head(webhook_url, timeout=5)
-        return 200 <= response.status_code < 300
-    except requests.exceptions.RequestException:
-        return False
+    """Validates Slack webhook URL format."""
+    if webhook_url.startswith("https://hooks.slack.com/services/"):
+        return True
+    return False
 
 
 def notify(message):
