@@ -71,4 +71,4 @@ jobs:
       - name: Trigger Portainer Update Webhook
         if: success()
         run: |
-          curl -X POST https://docker.subasically.me/api/stacks/webhooks/72182273-48df-4422-bb68-d8be241a9a90
+          curl -L -X POST https://docker.subasically.me/api/stacks/webhooks/72182273-48df-4422-bb68-d8be241a9a90
