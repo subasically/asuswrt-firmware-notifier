@@ -10,7 +10,7 @@ last_version_file = os.environ.get("LAST_VERSION_FILE")
 notification_method = os.environ.get("NOTIFICATION_METHOD")
 email_address = os.environ.get("EMAIL_ADDRESS")
 slack_webhook_url = os.environ.get("SLACK_WEBHOOK_URL")
-check_frequency = os.environ.get("CHECK_FREQUENCY", 60)
+check_frequency = int(os.environ.get("CHECK_FREQUENCY", 60))
 
 print(f"RSS Feed URL: {rss_feed_url}")
 print(f"Last Version File: {last_version_file}")
